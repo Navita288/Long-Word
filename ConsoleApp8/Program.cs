@@ -10,52 +10,37 @@ namespace ConsoleApp8
     class Program
     {
         
-    static void Main(string[] args)
+        static void Main(string[] args)
         {
-            new GeneralList().Run(57);
+            Program a = new Program();
+            Console.WriteLine("The Longest word is :");
+            Console.WriteLine(a.MyFunctionA("Ada Lovelace wrote the first alogirithm designed for processing by an Analytical Engine."));
         }
-
-
-        class GeneralList
+        public string MyFunctionA(string input)
         {
-            const int LEN = 100;
-            public ArrayList ListQ;
-            int AddUpToNumber = 0;
-            public void Run(int AddUpToNumber)
-
+            string[] words = input.Split(' ');
+            int wordArrayLength = words.Length;
+            int[] wordLength = new int[wordArrayLength];
+            int x = 0;
+            string aa = " ";
+            foreach (var word in words)
             {
-                Random r = new Random();
-                ListQ = new ArrayList();
-                for (int i = 0; i < LEN; i++)
+                if (word.Length > x)
                 {
-                    ListQ.Add(r.Next(100));
+                    input = word;
+                    aa = input;
+                    x = word.Length;
                 }
-                this.findTwoNumbersThatAddUpTo();
             }
-
-            public void findTwoNumbersThatAddUpTo()
+            string currentWord = words[0];
+            string nextWord;
+            string longestWord = currentWord;
+            for (int y = 0; y < words.Length - 1; y++)
             {
-                foreach (int num1 in ListQ)
-                {
-                    int a, b;
-                    a = num1;
-                    foreach (int num2 in ListQ)
-                    {
-                        b = num2;
-                        if (a + b == 57)
-                        {
-                            Console.WriteLine("The Perfect match is found. Numbers are: " + a + " " + b);
-                        }
-                    }
-
-
-                }
-                Console.ReadLine();
+                currentWord = words[y];
+                nextWord = words[y + 1];
             }
-
-
-
-
+            return aa;
         }
     }
 }
